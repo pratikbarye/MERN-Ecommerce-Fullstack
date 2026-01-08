@@ -10,7 +10,8 @@ const cloudinary = require('cloudinary');
 const bodyParser = require('body-parser');
 const fileUpload = require('express-fileupload');
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT;
+
 
 
 app.use(express.json({ limit: '50mb' }));
