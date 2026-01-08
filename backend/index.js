@@ -50,6 +50,9 @@ app.use('/api/v1/order', orderRoutes);
 app.use('/api/v1/payment', paymentRoutes);
 
 
+app.get('/', (req, res) => {
+    res.status(200).send('Backend is running successfully');
+});
 
 
 
