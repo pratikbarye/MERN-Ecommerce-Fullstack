@@ -14,14 +14,14 @@ const multer = require('multer')
 const path = require('path')
 
 
-// Handled uncaught exception
-process.on("uncaughtException", (err) => {
+process.on("unhandledRejection", (err) => {
     console.log(`Error: ${err.message}`);
-    console.log(`Shutting down the server rejection due to uncaughtException`);
+    console.log(`Shutting down the server rejection due to unhandled Promise rejection`);
     server.close(() => {
         process.exit(1);
     })
 });
+
 
 
 
