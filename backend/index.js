@@ -1,7 +1,6 @@
 const express = require('express');
 const app = express();
 const cookieParser = require('cookie-parser');
-const PORT = process.env.PORT || 5000;
 const connectDB = require('./connectDB/connect');
 const productRoutes = require('./routes/productRoute');
 const userRoutes = require('./routes/userRoute');
@@ -9,21 +8,9 @@ const orderRoutes = require('./routes/orderRoute');
 const paymentRoutes = require('./routes/paymentRoute');
 const cloudinary = require('cloudinary');
 const bodyParser = require('body-parser');
-const fileUpload = require('express-fileupload')
-const multer = require('multer')
-const path = require('path')
+const fileUpload = require('express-fileupload');
 
-
-process.on("unhandledRejection", (err) => {
-    console.log(`Error: ${err.message}`);
-    console.log(`Shutting down the server rejection due to unhandled Promise rejection`);
-    server.close(() => {
-        process.exit(1);
-    })
-});
-
-
-
+const PORT = process.env.PORT; // 🚨 REQUIRED FOR RAILWAY
 
 app.use(express.json({ limit: '50mb' }));
 app.use(cookieParser());
@@ -32,58 +19,45 @@ app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
 app.use(fileUpload());
 
 if (
-    process.env.CLOUDINARY_NAME &&
-    process.env.CLOUDINARY_API_KEY &&
-    process.env.CLOUDINARY_SECRET_KEY
+  process.env.CLOUDINARY_NAME &&
+  process.env.CLOUDINARY_API_KEY &&
+  process.env.CLOUDINARY_SECRET_KEY
 ) {
-    cloudinary.config({
-        cloud_name: process.env.CLOUDINARY_NAME,
-        api_key: process.env.CLOUDINARY_API_KEY,
-        api_secret: process.env.CLOUDINARY_SECRET_KEY
-    });
+  cloudinary.config({
+    cloud_name: process.env.CLOUDINARY_NAME,
+    api_key: process.env.CLOUDINARY_API_KEY,
+    api_secret: process.env.CLOUDINARY_SECRET_KEY
+  });
 }
-
 
 app.use('/api/v1/product', productRoutes);
 app.use('/api/v1/user', userRoutes);
 app.use('/api/v1/order', orderRoutes);
 app.use('/api/v1/payment', paymentRoutes);
 
-
 app.get('/', (req, res) => {
-    res.status(200).send('Backend is running successfully');
+  res.status(200).send('Backend is running successfully');
 });
 
-
-
-
-// TEST ENDPOINT
 app.get('/test', (req, res) => {
-    res.send("This is E-Kart website.");
+  res.send('This is E-Kart website.');
 });
-
-
 
 const start = async () => {
-    try {
-        await connectDB(process.env.MONGO_URI);
-        const server = app.listen(PORT, () => {
-            console.log(`Server running at http://localhost:${PORT}`);
-        })
-        // Unhandled promises rejection
-        process.on("unhandledRejection", (err) => {
-            console.log(`Error: ${err.message}`);
-            console.log(`Shutting down the server rejection due to unhandled Promise rejection`);
-            server.close(() => {
-                process.exit(1);
-            })
-        });
-    } catch (error) {
-        console.log("Something went wrong, Please check the Database");
-        process.exit(1);  // Ensure process exits if DB connection fails
-    }
-}
+  try {
+    await connectDB(process.env.MONGO_URI);
+    const server = app.listen(PORT, () => {
+      console.log(`Server running on port ${PORT}`);
+    });
+
+    process.on("unhandledRejection", (err) => {
+      console.log(`Error: ${err.message}`);
+      server.close(() => process.exit(1));
+    });
+  } catch (error) {
+    console.log("Database connection failed");
+    process.exit(1);
+  }
+};
 
 start();
-
-
