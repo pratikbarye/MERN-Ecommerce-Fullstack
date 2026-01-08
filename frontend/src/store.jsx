@@ -1,6 +1,15 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { thunk } from 'redux-thunk';
-import { composeWithDevTools } from '@redux-devtools/extension';
+import { configureStore } from '@reduxjs/toolkit';
+import rootReducer from './reducers';
+
+const store = configureStore({
+  reducer: rootReducer,
+  devTools: process.env.NODE_ENV !== 'production',
+});
+
+export default store;
+
 import { addNewProductReducer, allProductReviewReducer, deleteProductReviewReducer, deleteUpdateProductReducer, newReviewReducer, productReducer, singleProductReducer } from './reducers/productReducer';
 import { allUserReducer, profileReducer, singleUserDetailReducer, updateAndDeleteUserReducer, userReducer } from './reducers/userReducer';
 import { cartReducre } from './reducers/cartReducre';
