@@ -10,7 +10,7 @@ const cloudinary = require('cloudinary');
 const bodyParser = require('body-parser');
 const fileUpload = require('express-fileupload');
 
-const PORT = process.env.PORT; // 🚨 REQUIRED FOR RAILWAY
+const PORT = process.env.PORT || 8080; // 🚨 REQUIRED FOR RAILWAY
 
 app.use(express.json({ limit: '50mb' }));
 app.use(cookieParser());
