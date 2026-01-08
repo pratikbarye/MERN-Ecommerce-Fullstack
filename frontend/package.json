@@ -9,6 +9,7 @@
   "start": "vite preview"
   },
   "dependencies": {
+    "@reduxjs/toolkit": "^2.1.0"
     "@emotion/react": "^11.13.0",
     "@emotion/styled": "^11.13.0",
     "@mui/icons-material": "^5.16.7",
