@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 const cookieParser = require('cookie-parser');
-const PORT = 4000 || process.env.PORT;
+const PORT = process.env.PORT || 5000;
 const connectDB = require('./connectDB/connect');
 const productRoutes = require('./routes/productRoute');
 const userRoutes = require('./routes/userRoute');
@@ -23,9 +23,7 @@ process.on("uncaughtException", (err) => {
     })
 });
 
-if (process.env.NODE_ENV !== "PRODUCTION") {
-    require("dotenv").config({ path: "backend/.env" });
-}
+
 
 app.use(express.json({ limit: '50mb' }));
 app.use(cookieParser());
@@ -45,19 +43,9 @@ app.use('/api/v1/order', orderRoutes);
 app.use('/api/v1/payment', paymentRoutes);
 
 
-if (process.env.NODE_ENV === "production") {
-    const frontendPath = path.join(__dirname, '..', 'frontend', 'dist');
-    app.use(express.static(frontendPath));
 
-    app.get("*", (req, res) => {
-        res.sendFile(path.resolve(frontendPath, "index.html"))
-    })
 
-}
 
-app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, "../frontend/dist/index.html"))
-})
 
 // TEST ENDPOINT
 app.get('/test', (req, res) => {
