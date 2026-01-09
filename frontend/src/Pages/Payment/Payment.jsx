@@ -10,7 +10,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
 import { useAlert } from 'react-alert'
-import axios from 'axios';
+import axios from "../utils/axios";
 import { useNavigate } from 'react-router-dom'
 import { clearError, createOrder } from '../../actions/orderAction';
 import SmallSpinner from "../../Components/SmallSpinner/SmallSpinner";
