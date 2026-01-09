@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import  { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllProducts, clearError } from '../../actions/productAction'
 import Loder from '../../Components/Loader/Loder';
@@ -31,7 +31,9 @@ const AllProduct = () => {
         // ye phle length provide kar de rah hai pagination hone se phle in backend
     } = useSelector(state => state.products);
 
-    const { keyword } = useParams();
+   const params = useParams();
+const keyword = params.keyword || "";
+
 
     const setCurrentPageNo = (e) => {
         setCurrentPage(e)
@@ -39,13 +41,23 @@ const AllProduct = () => {
 
     console.log(keyword)
 
-    useEffect(() => {
-        if (error) {
-            alert.error(error)
-            dispatch(clearError());
-        }
-        dispatch(getAllProducts(keyword, currentPage, price, category, ratings));
-    }, [dispatch, keyword, currentPage, price, category, ratings]);
+  useEffect(() => {
+    if (error) {
+        alert.error(error);
+        dispatch(clearError());
+    }
+
+    dispatch(
+        getAllProducts(
+            keyword,
+            currentPage,
+            price,
+            category,
+            ratings
+        )
+    );
+}, [dispatch, error, keyword, currentPage, price, category, ratings]);
+
 
     useEffect(() => {
         window.scrollTo(0, 0);

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import './About.css';
 import { IoMdMailUnread } from "react-icons/io";
 import { FaSquareInstagram } from "react-icons/fa6";
