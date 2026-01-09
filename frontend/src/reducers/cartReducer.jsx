@@ -38,4 +38,6 @@ const cartReducre = (state = { cartItems: [], shippingInfo: {} }, action) => {
     }
 }
 
-export { cartReducre }
+// export { cartReducre }
+export default cartReducer;
+
