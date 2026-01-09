@@ -211,5 +211,5 @@ export {
     updateAndDeleteOrderReducer
 };
 
-export default orderReducer;
+
 
