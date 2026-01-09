@@ -24,7 +24,7 @@ const Payment = () => {
     const elements = useElements();
     const { user } = useSelector(state => state.user);
     const { shippingInfo, cartItems } = useSelector(state => state.cart);
-    const { error } = useSelector(state => state.order?.newOrder || {});
+    const { error } = useSelector(state => state.newOrder);
     const [loading, setLoading] = useState(false);
 
     const paymentData = {
