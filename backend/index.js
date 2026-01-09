@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const cookieParser = require('cookie-parser');
+const cors = require('cors');
 const connectDB = require('./connectDB/connect');
 const productRoutes = require('./routes/productRoute');
 const userRoutes = require('./routes/userRoute');
@@ -12,6 +13,13 @@ const fileUpload = require('express-fileupload');
 
 const PORT = process.env.PORT;
 
+app.use(
+  cors({
+    origin: "https://mern-ecommerce-fullstack.vercel.app",
+    credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE"],
+  })
+);
 
 
 app.use(express.json({ limit: '50mb' }));
