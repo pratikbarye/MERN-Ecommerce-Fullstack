@@ -15,7 +15,10 @@ const OrderList = () => {
     const navigate = useNavigate();
     const alert = useAlert();
     const dispatch = useDispatch();
-    const { orders, error } = useSelector(state => state.allOrder);
+    const { orders = [], error } = useSelector(
+  state => state.order.allOrders || {}
+);
+
     const { isDeleted, message: deleteMessage, error: DeleteError } = useSelector(state => state.updateAndDeleteOrder);
 
     const deleteOrderHandler = (id) => {
