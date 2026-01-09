@@ -13,7 +13,8 @@ import { useAlert } from 'react-alert'
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom'
 import { clearError, createOrder } from '../../actions/orderAction';
-import Small from '../../Components/smallSpiner/SmallSpiner'
+// import Small from '../../Components/smallSpiner/SmallSpiner'
+import SmallSpinner from "../../Components/smallSpinner/SmallSpinner";
 const Payment = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
