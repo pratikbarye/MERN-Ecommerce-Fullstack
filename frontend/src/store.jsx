@@ -1,18 +1,30 @@
 import { configureStore } from "@reduxjs/toolkit";
 
-// Import your reducers
-// import authReducer from "./reducers/authReducer";
+// reducers
 import userReducer from "./reducers/userReducer";
 import productReducer from "./reducers/productReducer";
 import cartReducer from "./reducers/cartReducer";
-import orderReducer from "./reducers/orderReducer";
+
+import {
+  newOrderReducer,
+  myOrderReducer,
+  singleOrderDetailsReducer,
+  allOrderReducer,
+  updateAndDeleteOrderReducer,
+} from "./reducers/orderReducer";
 
 const store = configureStore({
   reducer: {
     user: userReducer,
     cart: cartReducer,
-    product: productReducer,
-    order: orderReducer,
+    products: productReducer,
+
+    // ✅ ORDER reducers (VERY IMPORTANT)
+    newOrder: newOrderReducer,
+    myOrder: myOrderReducer,
+    singleOrderDetails: singleOrderDetailsReducer,
+    allOrder: allOrderReducer,
+    updateAndDeleteOrder: updateAndDeleteOrderReducer,
   },
   devTools: import.meta.env.MODE !== "production",
 });
