@@ -17,6 +17,10 @@
     "express-fileupload": "^1.4.0",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^7.6.0",
-    "multer": "^2.0.2"
+    "multer": "^2.0.2",
+    "nodemailer": "^7.0.12",
+    "sharp": "^0.34.5",
+    "stripe": "^20.1.2",
+    "validator": "^13.15.26"
   }
 }
