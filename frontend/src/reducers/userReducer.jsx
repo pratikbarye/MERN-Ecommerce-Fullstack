@@ -243,4 +243,14 @@ const updateAndDeleteUserReducer = (state = {}, action) => {
             return state;
     }
 }
-export { userReducer, profileReducer, allUserReducer, singleUserDetailReducer, updateAndDeleteUserReducer };
+// export { userReducer, profileReducer, allUserReducer, singleUserDetailReducer, updateAndDeleteUserReducer };
+
+export default userReducer;
+
+export {
+  profileReducer,
+  allUserReducer,
+  singleUserDetailReducer,
+  updateAndDeleteUserReducer
+};
+
