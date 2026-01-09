@@ -1,10 +1,8 @@
-import React from 'react'
-import './smallSpinner.css'
+import React from "react";
+import "./SmallSpinner.css";
 
-const Small = () => {
-  return (
-    <div className="spinner"></div>
-  )
-}
+const SmallSpinner = () => {
+  return <div className="spinner"></div>;
+};
 
-export default Small
+export default SmallSpinner;
