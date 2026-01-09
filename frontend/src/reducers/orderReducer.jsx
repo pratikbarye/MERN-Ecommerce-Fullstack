@@ -192,3 +192,4 @@ const singleOrderDetailsReducer = (state = { order: {} }, action) => {
 }
 
 export { newOrderReducer, myOrderReducer, singleOrderDetailsReducer, allOrderReducer, updateAndDeleteOrderReducer }
+export default orderReducer;
