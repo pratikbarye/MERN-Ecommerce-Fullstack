@@ -19,7 +19,8 @@ import {
     UPDATE_ORDER_SUCCESS,
     UPDATE_ORDER_FAIL
 } from '../constants/orderConstants';
-import axios from 'axios'
+import axios from "../utils/axios";
+
 
 //CREATE ORDER
 const createOrder = (orderDetails) => async (dispatch) => {
