@@ -19,7 +19,7 @@ import {
     UPDATE_ORDER_SUCCESS,
     UPDATE_ORDER_FAIL
 } from '../constants/orderConstants';
-import axios from "../utils/axios";
+import axios from "../Utils/axios";
 
 
 //CREATE ORDER

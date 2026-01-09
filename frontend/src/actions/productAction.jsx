@@ -1,4 +1,4 @@
-import axios from "../utils/axios";
+import axios from "../Utils/axios";
 import {
     ALL_PRODUCT_REQUEST,
     ALL_PRODUCT_SUCEESS,

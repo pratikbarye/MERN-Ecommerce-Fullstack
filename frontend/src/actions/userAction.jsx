@@ -32,7 +32,7 @@ import {
     UPDATE_USER_SUCEESS,
     UPDATE_USER_FAIL,
 } from '../constants/userConstants';
-import axios from "../utils/axios";
+import axios from "../Utils/axios";
 import Cookies from 'js-cookie'
 
 
