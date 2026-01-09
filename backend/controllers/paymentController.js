@@ -1,5 +1,13 @@
 require('dotenv').config()
-const stripe = require('stripe')(process.env.STRIPE_SECERET_KEY);
+const Stripe = require("stripe");
+
+const getStripe = () => {
+  if (!process.env.STRIPE_SECRET_KEY) {
+    throw new Error("Stripe secret key not configured");
+  }
+  return new Stripe(process.env.STRIPE_SECRET_KEY);
+};
+
 
 const processPayment = async (req, res) => {
     try {
