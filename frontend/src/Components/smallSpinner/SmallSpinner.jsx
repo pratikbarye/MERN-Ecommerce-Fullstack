@@ -1,5 +1,5 @@
 import React from 'react'
-import './smallSpiner.css'
+import './smallSpinner.css'
 
 const Small = () => {
   return (
