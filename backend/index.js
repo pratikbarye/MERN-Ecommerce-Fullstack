@@ -1,7 +1,8 @@
+const cookieParser = require('cookie-parser');
+const cors = require('cors');
 const express = require('express');
 const app = express();
 const cookieParser = require('cookie-parser');
-const cors = require('cors');
 const connectDB = require('./connectDB/connect');
 const productRoutes = require('./routes/productRoute');
 const userRoutes = require('./routes/userRoute');
@@ -20,6 +21,7 @@ app.use(
     methods: ["GET", "POST", "PUT", "DELETE"],
   })
 );
+
 
 
 app.use(express.json({ limit: '50mb' }));
