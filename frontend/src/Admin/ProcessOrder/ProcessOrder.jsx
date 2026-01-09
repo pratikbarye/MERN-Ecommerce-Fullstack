@@ -16,8 +16,12 @@ const ProcessOrder = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
-    const { order, error, loading } = useSelector((state) => state.singleOrderDetails);
-    const { isUpdated, message, error: updateError } = useSelector((state) => state.updateAndDeleteOrder);
+    const { order = {}, error, loading = false } = useSelector(
+  (state) => state.order.orderDetails || {}
+);
+
+    const { isUpdated, message, error: updateError } =
+  useSelector((state) => state.order.adminOrder || {});
 
     
     const [orderStatus, setOrderStatus] = useState('');
