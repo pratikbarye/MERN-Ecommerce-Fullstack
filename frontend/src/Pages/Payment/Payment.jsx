@@ -24,7 +24,7 @@ const Payment = () => {
     const elements = useElements();
     const { user } = useSelector(state => state.user);
     const { shippingInfo, cartItems } = useSelector(state => state.cart);
-    const { error } = useSelector(state => state.newOrder);
+    const { error } = useSelector(state => state.order?.newOrder || {});
     const [loading, setLoading] = useState(false);
 
     const paymentData = {
@@ -134,8 +134,8 @@ const Payment = () => {
                         ref={payBtn}
                         className="paymentBtn"
                     >{
-                            loading ? <Small />
-                                : `Pay - ₹${orderInfo && Math.round(orderInfo.Total)}`
+                           loading ? <SmallSpinner /> : `Pay - ₹${orderInfo && Math.round(orderInfo.Total)}`
+
                         }</button>
                 </form>
             </div>
