@@ -278,4 +278,5 @@ const deleteProductReviewReducer = (state = {}, action) => {
     }
 }
 
-export { productReducer, singleProductReducer, newReviewReducer, addNewProductReducer, deleteUpdateProductReducer, allProductReviewReducer,deleteProductReviewReducer };
+export { productReducer, singleProductReducer, newReviewReducer, addNewProductReducer, deleteUpdateProductReducer, allProductReviewReducer, deleteProductReviewReducer };
+export default productReducer;
