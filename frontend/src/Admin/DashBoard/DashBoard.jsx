@@ -24,7 +24,9 @@ const DashBoard = () => {
   // Register the necessary components
   const dispatch = useDispatch()
   const { products } = useSelector(state => state.products)
-  const { totalAmount, orders } = useSelector(state => state.allOrder)
+  const { totalAmount, orders } = useSelector(
+  state => state.order.allOrders
+);
   const { users } = useSelector(state => state.allUser);
   ChartJS.register(
     CategoryScale,
