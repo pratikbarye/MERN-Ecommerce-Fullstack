@@ -1,3 +1,5 @@
+import { combineReducers } from "redux";
+
 import {
     CREATE_ORDER_REQUEST,
     CREATE_ORDER_SUCCESS,
@@ -191,5 +193,23 @@ const singleOrderDetailsReducer = (state = { order: {} }, action) => {
     }
 }
 
-export { newOrderReducer, myOrderReducer, singleOrderDetailsReducer, allOrderReducer, updateAndDeleteOrderReducer }
+const orderReducer = combineReducers({
+    newOrder: newOrderReducer,
+    myOrders: myOrderReducer,
+    allOrders: allOrderReducer,
+    orderDetails: singleOrderDetailsReducer,
+    adminOrder: updateAndDeleteOrderReducer,
+});
+
+
+
+export {
+    newOrderReducer,
+    myOrderReducer,
+    singleOrderDetailsReducer,
+    allOrderReducer,
+    updateAndDeleteOrderReducer
+};
+
 export default orderReducer;
+
